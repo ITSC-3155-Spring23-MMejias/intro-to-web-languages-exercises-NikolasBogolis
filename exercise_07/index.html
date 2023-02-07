@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 7</title>
+</head>
+<body>
+    <input type="text" id="txt-price" placeholder="Enter the price of the item">
+    <input type="text" id="txt-quantity" placeholder="Enter the quanity of the item">
+    <button id="btn-submit">Calculate</button> <!-- The button used to actually utilize the JavaScript code below. -->
+    <div id="output"></div> <!-- The div tag used to display the final result -->
+
+    <script>
+    var priceInput = document.getElementById('txt-price'); // Looks through the DOM and finds an element with the ID 'txt-price' and assigns it to priceInput
+    var quantityInput = document.getElementById('txt-quantity'); // Looks through the DOM and finds an element with the ID containing 'txt-quantity' and assigns it to quantityInput
+    var submitBtn = document.getElementById('btn-submit'); // Looks through the DOM and locates 'btn-submit' and adds that element to submitBtn
+    var output = document.getElementById('output'); // Looks through the DOM and locates an element with the ID 'output' and places it in the variable 'output'.
+
+    submitBtn.addEventListener('click', function () { // Creates a DOM event for the click function
+        var price = priceInput.value; // Gets the value of the element 'txt-price'
+        var quanity = quantityInput.value; // Gets the value of the element 'txt-quantity'
+        price = +price; // Price counter
+        quanity = +quanity; // Quantity counter
+        if (Number.isNaN(price) || Number.isNaN(quanity)) { // If the price value isn't a number OR the quantity isn't a number then...
+        output.innerHTML = 'Invalid input'; // Inside the output div, write 'Invalid input'
+        return; // Exit
+        }
+        var totalPrice = price * quanity; // Actual calculation of the total price
+        totalPrice = Math.round(totalPrice * 100) / 100; // Takes the total price variable and converts it to a percentage then rounding
+        output.innerHTML = quanity + ' items at $' + price + ' each is $' + totalPrice; // Adds to the output div the quantity and price of each item and what its total price would be.
+    });
+    </script>
+</body>
+</html>
